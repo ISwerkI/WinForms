@@ -31,7 +31,12 @@ namespace Clock
 
 		private void btnHideControls_Click(object sender, EventArgs e)
 		{
-
+			cbShowDate.Visible = false;
+			cbShowWeekday.Visible = false;
+			btnHideControls.Visible = false;
+			this.ShowInTaskbar = false;
+			this.FormBorderStyle = FormBorderStyle.None;
+			this.TransparencyKey = this.BackColor;
 		}
 	}
 }
