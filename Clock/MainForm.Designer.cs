@@ -39,14 +39,15 @@
 			// labelTime
 			// 
 			this.labelTime.AutoSize = true;
-			this.labelTime.BackColor = System.Drawing.SystemColors.Control;
+			this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
 			this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelTime.ForeColor = System.Drawing.SystemColors.Highlight;
+			this.labelTime.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.labelTime.Location = new System.Drawing.Point(13, 9);
 			this.labelTime.Name = "labelTime";
 			this.labelTime.Size = new System.Drawing.Size(272, 51);
 			this.labelTime.TabIndex = 0;
 			this.labelTime.Text = "Current Time";
+			this.labelTime.DoubleClick += new System.EventHandler(this.labelTime_DoubleClick);
 			// 
 			// timer
 			// 
