@@ -15,9 +15,7 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
-			int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-			this.StartPosition = FormStartPosition.Manual;
-			this.Location = new Point(screenWidth - this.Width, 0);
+			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 0);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
