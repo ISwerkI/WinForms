@@ -12,9 +12,13 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		private const int WM_LBUTTONDBLCLK = 0x0203;
 		public MainForm()
 		{
 			InitializeComponent();
+			int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+			this.StartPosition = FormStartPosition.Manual;
+			this.Location = new Point(screenWidth - this.Width, 0);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
@@ -37,6 +41,22 @@ namespace Clock
 			this.ShowInTaskbar = false;
 			this.FormBorderStyle = FormBorderStyle.None;
 			this.TransparencyKey = this.BackColor;
+
+		}
+		private bool PreFilterMessage(ref Message m)
+		{
+			if (m.Msg == WM_LBUTTONDBLCLK)
+			{
+				cbShowDate.Visible = false;
+				cbShowWeekday.Visible = false;
+				btnHideControls.Visible = false;
+				this.ShowInTaskbar = true;
+				this.FormBorderStyle = FormBorderStyle.None;
+				this.TransparencyKey = this.BackColor;
+				return true;
+			}
+			else
+				return false;
 		}
 	}
 }
