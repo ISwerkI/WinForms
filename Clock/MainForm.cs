@@ -16,6 +16,7 @@ namespace Clock
 		{
 			InitializeComponent();
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 0);
+			SetVisibility(false);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
