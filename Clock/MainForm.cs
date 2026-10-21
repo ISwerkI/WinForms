@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Clock
 {
@@ -14,15 +15,21 @@ namespace Clock
 	{
 		ColorDialog backgroundColorDialog;
 		ColorDialog foregroundColorDialog;
+		FontDialog fontDialog;
 		public MainForm()
 		{
-			InitializeComponent();
+			InitializeComponent();		
+			AllocConsole();
 			backgroundColorDialog = new ColorDialog();
 			foregroundColorDialog = new ColorDialog();
+			fontDialog = new FontDialog();
 
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 0);
 			SetVisibility(false);
+
 		}
+		[DllImport("kernel32.dll")]
+		public static extern bool AllocConsole();
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
@@ -76,6 +83,13 @@ namespace Clock
 		{
 			if(foregroundColorDialog.ShowDialog() == DialogResult.OK)
 				labelTime.ForeColor = foregroundColorDialog.Color;
+		}
+		private void tsmiFont_Click(object sender, EventArgs e)
+		{
+			if(fontDialog.ShowDialog() == DialogResult.OK)
+			{
+
+			}
 		}
 	}
 }
