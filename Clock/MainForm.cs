@@ -42,7 +42,7 @@ namespace Clock
 			if (cbShowWeekday.Checked) labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 		}
 
-		private void btnHideControls_Click(object sender, EventArgs e)	=> SetVisibility(tsmiShowControls.Checked = false);
+		private void btnHideControls_Click(object sender, EventArgs e)	=> SetVisibility(tsmiShowControls.Checked   = false);
 		private void labelTime_DoubleClick(object sender, EventArgs e)	=>	SetVisibility(tsmiShowControls.Checked = true);
 		private void tsmiTopmost_CheckedChanged(object sender, EventArgs e) => this.TopMost = tsmiTopmost.Checked;
 		private void tsmiShowControls_Click(object sender, EventArgs e)	=>	SetVisibility(tsmiShowControls.Checked);
@@ -50,5 +50,17 @@ namespace Clock
 		private void tsmiShowWeekday_CheckedChanged(object sender, EventArgs e) => cbShowWeekday.Checked = tsmiShowWeekday.Checked;
 		private void cbShowDate_CheckedChanged(object sender, EventArgs e)	=>	tsmiShowDate.Checked = cbShowDate.Checked;
 		private void cbShowWeekday_CheckedChanged(object sender, EventArgs e)	=>	tsmiShowWeekday.Checked = cbShowWeekday.Checked;
+		private void tsmiExit_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+		private void notifyIcon_DoubleClick(object sender, EventArgs e)
+		{
+			if(this.TopMost == false)
+			{
+				this.TopMost = true;
+				this.TopMost = false;
+			}
+		}
 	}
 }
