@@ -12,9 +12,14 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		ColorDialog backgroundColorDialog;
+		ColorDialog foregroundColorDialog;
 		public MainForm()
 		{
 			InitializeComponent();
+			backgroundColorDialog = new ColorDialog();
+			foregroundColorDialog = new ColorDialog();
+
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 0);
 			SetVisibility(false);
 		}
@@ -40,6 +45,7 @@ namespace Clock
 			labelTime.Text = DateTime.Now.ToString("HH:mm:ss tt");
 			if (cbShowDate.Checked) labelTime.Text += $"\n{DateTime.Now.ToString("yyy.MM.dd")}";
 			if (cbShowWeekday.Checked) labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
+			notifyIcon.Text = labelTime.Text;
 		}
 
 		private void btnHideControls_Click(object sender, EventArgs e)	=> SetVisibility(tsmiShowControls.Checked   = false);
@@ -50,10 +56,7 @@ namespace Clock
 		private void tsmiShowWeekday_CheckedChanged(object sender, EventArgs e) => cbShowWeekday.Checked = tsmiShowWeekday.Checked;
 		private void cbShowDate_CheckedChanged(object sender, EventArgs e)	=>	tsmiShowDate.Checked = cbShowDate.Checked;
 		private void cbShowWeekday_CheckedChanged(object sender, EventArgs e)	=>	tsmiShowWeekday.Checked = cbShowWeekday.Checked;
-		private void tsmiExit_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		private void tsmiExit_Click(object sender, EventArgs e)	=>	this.Close();
 		private void notifyIcon_DoubleClick(object sender, EventArgs e)
 		{
 			if(this.TopMost == false)
@@ -61,6 +64,18 @@ namespace Clock
 				this.TopMost = true;
 				this.TopMost = false;
 			}
+		}
+		private void tsmiBackgroundClor_Click(object sender, EventArgs e)
+		{
+			if(backgroundColorDialog.ShowDialog() == DialogResult.OK)
+			{
+				labelTime.BackColor = backgroundColorDialog.Color;
+			}
+		}
+		private void tsmiForegroundColor_Click(object sender, EventArgs e)
+		{
+			if(foregroundColorDialog.ShowDialog() == DialogResult.OK)
+				labelTime.ForeColor = foregroundColorDialog.Color;
 		}
 	}
 }
