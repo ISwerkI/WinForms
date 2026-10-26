@@ -18,7 +18,7 @@ namespace Clock
 		FontDialog fontDialog;
 		public MainForm()
 		{
-			InitializeComponent();		
+			InitializeComponent();
 			AllocConsole();
 			backgroundColorDialog = new ColorDialog();
 			foregroundColorDialog = new ColorDialog();
@@ -30,10 +30,9 @@ namespace Clock
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-
+			
 		}
 
 		void SetVisibility(bool visible)
@@ -91,5 +90,7 @@ namespace Clock
 
 			}
 		}
+
+
 	}
 }

@@ -13,10 +13,26 @@ namespace Clock
 {
 	public partial class FontDialog : Form
 	{
+
 		public FontDialog()
 		{
 			InitializeComponent();
 			Console.WriteLine(Directory.GetCurrentDirectory());
+			Console.WriteLine($"{Application.ExecutablePath}");
+			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..\\Fonts");
+			Console.WriteLine(Directory.GetCurrentDirectory());
+
+			LoadFonts("*.ttf");
+			LoadFonts("*.oft");
+		}
+		void LoadFonts(string pattern)
+		{
+			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), pattern);
+			for(int i = 0; i < files.Length; i++)
+			{
+				files[i] = files[i].Split('\\').Last();
+			}
+			comboBoxFont.Items.AddRange(files);
 		}
 	}
 }

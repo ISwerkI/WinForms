@@ -34,6 +34,7 @@
 			this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.tsmiTopmost = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiShowControls = new System.Windows.Forms.ToolStripMenuItem();
+			this.showConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiShowDate = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiShowWeekday = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,8 +60,8 @@
 			this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
 			this.labelTime.ContextMenuStrip = this.contextMenu;
 			this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelTime.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.labelTime.Location = new System.Drawing.Point(13, 9);
+			this.labelTime.ForeColor = System.Drawing.Color.White;
+			this.labelTime.Location = new System.Drawing.Point(45, 9);
 			this.labelTime.Name = "labelTime";
 			this.labelTime.Size = new System.Drawing.Size(272, 51);
 			this.labelTime.TabIndex = 0;
@@ -72,6 +73,7 @@
 			this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTopmost,
             this.tsmiShowControls,
+            this.showConsoleToolStripMenuItem,
             this.toolStripSeparator1,
             this.tsmiShowDate,
             this.tsmiShowWeekday,
@@ -82,13 +84,13 @@
             this.tsmiAutorun,
             this.tsmiExit});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(181, 220);
+			this.contextMenu.Size = new System.Drawing.Size(153, 220);
 			// 
 			// tsmiTopmost
 			// 
 			this.tsmiTopmost.CheckOnClick = true;
 			this.tsmiTopmost.Name = "tsmiTopmost";
-			this.tsmiTopmost.Size = new System.Drawing.Size(180, 22);
+			this.tsmiTopmost.Size = new System.Drawing.Size(152, 22);
 			this.tsmiTopmost.Text = "Topmost";
 			this.tsmiTopmost.CheckedChanged += new System.EventHandler(this.tsmiTopmost_CheckedChanged);
 			// 
@@ -96,20 +98,26 @@
 			// 
 			this.tsmiShowControls.CheckOnClick = true;
 			this.tsmiShowControls.Name = "tsmiShowControls";
-			this.tsmiShowControls.Size = new System.Drawing.Size(180, 22);
+			this.tsmiShowControls.Size = new System.Drawing.Size(152, 22);
 			this.tsmiShowControls.Text = "Show controls";
 			this.tsmiShowControls.Click += new System.EventHandler(this.tsmiShowControls_Click);
+			// 
+			// showConsoleToolStripMenuItem
+			// 
+			this.showConsoleToolStripMenuItem.Name = "showConsoleToolStripMenuItem";
+			this.showConsoleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.showConsoleToolStripMenuItem.Text = "Show console";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// tsmiShowDate
 			// 
 			this.tsmiShowDate.CheckOnClick = true;
 			this.tsmiShowDate.Name = "tsmiShowDate";
-			this.tsmiShowDate.Size = new System.Drawing.Size(180, 22);
+			this.tsmiShowDate.Size = new System.Drawing.Size(152, 22);
 			this.tsmiShowDate.Text = "Show date";
 			this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
 			// 
@@ -117,19 +125,19 @@
 			// 
 			this.tsmiShowWeekday.CheckOnClick = true;
 			this.tsmiShowWeekday.Name = "tsmiShowWeekday";
-			this.tsmiShowWeekday.Size = new System.Drawing.Size(180, 22);
+			this.tsmiShowWeekday.Size = new System.Drawing.Size(152, 22);
 			this.tsmiShowWeekday.Text = "Show weekday";
 			this.tsmiShowWeekday.CheckedChanged += new System.EventHandler(this.tsmiShowWeekday_CheckedChanged);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
 			// 
 			// tsmiFont
 			// 
 			this.tsmiFont.Name = "tsmiFont";
-			this.tsmiFont.Size = new System.Drawing.Size(180, 22);
+			this.tsmiFont.Size = new System.Drawing.Size(152, 22);
 			this.tsmiFont.Text = "Font";
 			this.tsmiFont.Click += new System.EventHandler(this.tsmiFont_Click);
 			// 
@@ -139,39 +147,39 @@
             this.tsmiBackgroundClor,
             this.tsmiForegroundColor});
 			this.tsmiColor.Name = "tsmiColor";
-			this.tsmiColor.Size = new System.Drawing.Size(180, 22);
+			this.tsmiColor.Size = new System.Drawing.Size(152, 22);
 			this.tsmiColor.Text = "Color";
 			// 
 			// tsmiBackgroundClor
 			// 
 			this.tsmiBackgroundClor.Name = "tsmiBackgroundClor";
-			this.tsmiBackgroundClor.Size = new System.Drawing.Size(180, 22);
+			this.tsmiBackgroundClor.Size = new System.Drawing.Size(166, 22);
 			this.tsmiBackgroundClor.Text = "Background clor";
 			this.tsmiBackgroundClor.Click += new System.EventHandler(this.tsmiBackgroundClor_Click);
 			// 
 			// tsmiForegroundColor
 			// 
 			this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-			this.tsmiForegroundColor.Size = new System.Drawing.Size(180, 22);
+			this.tsmiForegroundColor.Size = new System.Drawing.Size(166, 22);
 			this.tsmiForegroundColor.Text = "Foreground color";
 			this.tsmiForegroundColor.Click += new System.EventHandler(this.tsmiForegroundColor_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
 			// 
 			// tsmiAutorun
 			// 
 			this.tsmiAutorun.CheckOnClick = true;
 			this.tsmiAutorun.Name = "tsmiAutorun";
-			this.tsmiAutorun.Size = new System.Drawing.Size(180, 22);
+			this.tsmiAutorun.Size = new System.Drawing.Size(152, 22);
 			this.tsmiAutorun.Text = "Autorun";
 			// 
 			// tsmiExit
 			// 
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+			this.tsmiExit.Size = new System.Drawing.Size(152, 22);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
@@ -269,6 +277,7 @@
 		private System.Windows.Forms.ToolStripMenuItem tsmiAutorun;
 		private System.Windows.Forms.ToolStripMenuItem tsmiExit;
 		private System.Windows.Forms.NotifyIcon notifyIcon;
+		private System.Windows.Forms.ToolStripMenuItem showConsoleToolStripMenuItem;
 	}
 }
 
