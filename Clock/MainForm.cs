@@ -87,7 +87,7 @@ namespace Clock
 		{
 			if(fontDialog.ShowDialog() == DialogResult.OK)
 			{
-
+				labelTime.Font = fontDialog.Font;
 			}
 		}
 
