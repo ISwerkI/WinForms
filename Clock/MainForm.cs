@@ -20,11 +20,12 @@ namespace Clock
 		{
 			InitializeComponent();
 			AllocConsole();
+			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width*2, 0);
 			backgroundColorDialog = new ColorDialog();
 			foregroundColorDialog = new ColorDialog();
 			fontDialog = new FontDialog();
+			fontDialog = new FontDialog(this);
 
-			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 0);
 			SetVisibility(false);
 
 		}
