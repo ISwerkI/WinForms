@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace Clock
 {
@@ -92,6 +93,13 @@ namespace Clock
 			}
 		}
 
-
+		private void tsmiAutorun_CheckedChanged(object sender, EventArgs e)
+		{
+			string key_name = "clock_P_418";
+			RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+			if (tsmiAutorun.Checked) registryKey.SetValue(key_name, Application.ExecutablePath);
+			else registryKey.DeleteValue(key_name, false);
+			registryKey.Dispose();
+		}
 	}
 }
