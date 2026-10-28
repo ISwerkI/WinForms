@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using System.IO;    //Input/Output
+using System.Diagnostics;
 
 namespace Clock
 {
@@ -46,6 +48,32 @@ namespace Clock
 			this.FormBorderStyle		= visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
 			this.TransparencyKey		= visible ? Color.Empty:this.BackColor;
 		}
+		void SaveSettings()
+		{
+			string filename = "Settings.ini";
+			StreamWriter writer = new StreamWriter(filename);
+			writer.WriteLine(tsmiTopmost.Checked);
+			writer.WriteLine(tsmiShowControls.Checked);
+			writer.WriteLine(tsmiShowDate.Checked);
+			writer.WriteLine(tsmiShowWeekday.Checked);
+			writer.WriteLine(fontDialog.Filename);
+			writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+			writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+			writer.Close();
+			Process.Start("notepad", filename);
+		}
+		void LoadSettings()
+		{
+			string filename = "Settings.ini";
+			StreamReader reader		 = new StreamReader(filename);
+			tsmiTopmost.Checked		 = bool.Parse(reader.ReadLine());
+			tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
+			tsmiShowDate.Checked	 = bool.Parse(reader.ReadLine());
+			tsmiShowWeekday.Checked	 = bool.Parse(reader.ReadLine());
+
+			reader.Close();
+			Process.Start("notepad", filename);
+		}
 
 		//			Event handlers (Обработчики событий)
 		private void timer_Tick(object sender, EventArgs e)
@@ -55,7 +83,6 @@ namespace Clock
 			if (cbShowWeekday.Checked) labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 			notifyIcon.Text = labelTime.Text;
 		}
-
 		private void btnHideControls_Click(object sender, EventArgs e)	=> SetVisibility(tsmiShowControls.Checked   = false);
 		private void labelTime_DoubleClick(object sender, EventArgs e)	=>	SetVisibility(tsmiShowControls.Checked = true);
 		private void tsmiTopmost_CheckedChanged(object sender, EventArgs e) => this.TopMost = tsmiTopmost.Checked;
@@ -92,7 +119,6 @@ namespace Clock
 				labelTime.Font = fontDialog.Font;
 			}
 		}
-
 		private void tsmiAutorun_CheckedChanged(object sender, EventArgs e)
 		{
 			string key_name = "clock_P_418";
@@ -101,5 +127,21 @@ namespace Clock
 			else registryKey.DeleteValue(key_name, false);
 			registryKey.Dispose();
 		}
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			//string filename = "Settings.ini";
+			//StreamWriter writer = new StreamWriter(filename);
+			//writer.WriteLine(tsmiTopmost.Checked);
+			//writer.WriteLine(tsmiShowControls.Checked);
+			//writer.WriteLine(tsmiShowDate.Checked);
+			//writer.WriteLine(tsmiShowWeekday.Checked);
+			//writer.WriteLine(fontDialog.Filename);
+			//writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+			//writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+			//writer.Close();
+			//Process.Start("notepad", filename);
+			SaveSettings();
+		}
+
 	}
 }
